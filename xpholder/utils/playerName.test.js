@@ -42,6 +42,14 @@ describe("playerName", () => {
     expect(playerName("Sarah¹⁵ DM", null)).toBe("Sarah");
   });
 
+  it("strips a space-separated word that precedes a superscript run", () => {
+    // The word right before the superscript is a slot-tagged character name
+    // (e.g. "Jaci³"); only the superscript-and-after was being eaten before,
+    // leaving the dangling character name attached to the DM's actual name.
+    expect(playerName("Snowie Jaci³ Iris⁵ est", null)).toBe("Snowie");
+    expect(playerName("Adam Frodo¹ Sam² PST", null)).toBe("Adam");
+  });
+
   it("strips a trailing -tag suffix", () => {
     expect(playerName("Tom-DM", null)).toBe("Tom");
   });

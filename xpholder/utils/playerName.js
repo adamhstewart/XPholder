@@ -10,7 +10,7 @@ function playerName(displayName, username) {
   if (!raw) raw = segments.find((s) => s.trim()) || name;
   raw = raw
     .replace(/[\s-]*\(.*$/, "")
-    .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹ᴬᴮᴰᴱᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴿˢᵀᵁⱽᵂ]+.*$/, "")
+    .replace(/(?:\s\S*)?[⁰¹²³⁴⁵⁶⁷⁸⁹ᴬᴮᴰᴱᴳᴴᴵᴶᴷᴸᴹᴺᴼᴾᴿˢᵀᵁⱽᵂ]+.*$/, "")
     .replace(/-[^-\s]+$/, "")
     .trim();
   if (raw.includes(" ") && /\d|\b(UTC|EST|PST|CST|MST|GMT|CET|CEST|BST|AEST|AEDT|JST|IST)\b/i.test(raw)) {
